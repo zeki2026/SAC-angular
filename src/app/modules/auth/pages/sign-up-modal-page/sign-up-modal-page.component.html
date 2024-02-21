@@ -1,0 +1,79 @@
+<div class="border-bottom-0 modal-header bg-primary text-light">
+    <p class="mb-0 modal-title h1 fs-5 w-100 text-center">Registrar</p>
+    <button aria-label="Close" type="button" class="px-1 btn btn-sm" (click)="activeModal.dismiss('button close')">
+        <i class="mb-0 h4 bi bi-x text-light"></i>
+    </button>
+</div>
+<div class="modal-body">
+    <form name="form--sign-up">
+        <fieldset>
+            <div class="mb-3">
+                <label for="input__sign-up--user-keys" class="form-label">
+                    Claves <span class="text-danger">*</span>
+                </label>
+                <div class="input-group">
+                    <span class="border-0 input-group-text bg-transparent">
+                        <i class="mb-0 h5 bi bi-person-badge"></i>
+                    </span>
+                    <input type="text" name="userKeys" id="input__sign-up--user-keys" class="form-control" maxlength="5"
+                        required>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="input__sign-up--first-surname" class="form-label">
+                    Primer Apellido <span class="text-danger">*</span>
+                </label>
+                <div class="input-group">
+                    <span class="border-0 input-group-text bg-transparent">
+                        <i class="mb-0 h5 bi bi-person-vcard"></i>
+                    </span>
+                    <input type="text" name="firstSurname" id="input__sign-up--first-surname" class="form-control"
+                        required>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="input__sign-up--second-surname" class="form-label">
+                    Segundo Apellido <span class="text-danger">*</span>
+                </label>
+                <div class="input-group">
+                    <span class="border-0 input-group-text bg-transparent">
+                        <i class="mb-0 h5 bi bi-person-vcard"></i>
+                    </span>
+                    <input type="text" name="secondSurname" id="input__sign-up--second-surname" class="form-control"
+                        required>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="input__sign-up--name" class="form-label">
+                    Nombre (s) <span class="text-danger">*</span>
+                </label>
+                <div class="input-group">
+                    <span class="border-0 input-group-text bg-transparent">
+                        <i class="mb-0 h5 bi bi-person-vcard"></i>
+                    </span>
+                    <input type="text" name="name" id="input__sign-up--name" class="form-control" required>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="input__sign-up--email" class="form-label">
+                    Email <span class="text-danger">*</span>
+                </label>
+                <div class="input-group">
+                    <span class="border-0 input-group-text bg-transparent">
+                        <i class="mb-0 h5 bi bi-at"></i>
+                    </span>
+                    <input type="email" name="email" id="input__sign-up--email" class="form-control"
+                        pattern="[\w.\-]+@sertec\.com\.mx" required>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+    <small class="d-block fw-bold text-danger text-start text-lg-end">
+        * Campos obligatorios
+    </small>
+</div>
+<div class="modal-footer justify-content-center">
+    <button type="button" id="button__submit-form--sign-up" class="btn btn-primary">
+        Confirmar
+    </button>
+</div>

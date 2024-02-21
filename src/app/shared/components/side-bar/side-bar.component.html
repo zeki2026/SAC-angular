@@ -1,0 +1,61 @@
+<div class="container p-3" style="max-height:100vh ; min-height: 100vh;">
+  <nav class="border border-blak rounded-4 shadow-lg" [ngClass]="{'wrapper':wrap === true, 'wrap':wrap ===false}">
+
+    <div class="position-relative d-flex align-items-center bg-brand-primary rounded-top-2">
+      <div class="w-100" style="height: 4rem;">
+        <button type="button" [ngClass]="{'wrapper':wrap === true, 'wrap':wrap ===false}" class="btn h-100">
+          <img src='../../../../assets/public/img/sac_w.svg' alt="logo SAC" class="h-100">
+        </button>
+      </div>
+      <button (click)="wrap=!wrap"
+        class="d-flex align-items-center justify-content-center position-absolute btn btn-light rounded-circle border border-blak"
+        style="left:85%; width: 2rem; height: 2rem;" type="button">
+        <i class="fa-solid" [ngClass]="{'fa-chevron-left':wrap === true, 'fa-chevron-right':wrap ===false}"></i>
+      </button>
+    </div>
+
+    <div class="overflow-y-scroll p-2 border" style="height: 75vh;">
+      <div *ngFor="let item of sidebarProperties.availableGroups">
+        <!-- <i class="fa-solid fa-chart-line"></i> -->
+        <h3 class="fs-5" [ngClass]="{'wrapper':wrap === true, 'wrap':wrap ===false}">Grupo {{item.bundle}}</h3>
+        <ng-container *ngTemplateOutlet="groupSection; context:{item:item.bundle}"></ng-container>
+      </div>
+
+    </div>
+
+    <div class="overflow-hidden">
+        <div class="p-2">
+          <ul class="m-0">
+            <li class="d-flex align-items-center mb-3" style="height: 2rem;" [ngClass]="{'':wrap === true, 'justify-content-center':wrap ===false}">
+              <label for="jobcodes" class="d-flex align-items-center"><i class="fa-solid fa-user-large fs-4"></i></label>
+              <button id="jobcodes" class="btn btn-light ps-2" [ngClass]="{'wrapper':wrap === true, 'wrap':wrap ===false}">
+
+                <span [ngClass]="{'wrapper':wrap === true, 'wrap':wrap ===false}">ACAZW</span>
+              </button>
+            </li>
+            <li class="d-flex align-items-center" style="height: 2rem;" [ngClass]="{'':wrap === true, 'justify-content-center':wrap ===false}">
+              <label for="session" class="d-flex align-items-center"><i class="fa-solid fa-arrow-right-from-bracket fs-4"></i></label>
+              <button id="session" class="btn btn-light ps-2" [ngClass]="{'wrapper':wrap === true, 'wrap':wrap ===false}">
+
+                <span [ngClass]="{'wrapper':wrap === true, 'wrap':wrap ===false}">Cerrar sesión</span>
+              </button>
+            </li>
+          </ul>
+        </div>
+    </div>
+
+  </nav>
+
+</div>
+
+<ng-template #groupSection let-bundle="item">
+  <ul>
+    <li *ngFor="let data of sidebarProperties.availableGroupsProperties">
+      <button [ngClass]="{'wrapper':wrap === true, 'wrap':wrap ===false}" *ngIf="data.bundle === bundle" type="button"
+        (click)="redirect(data.internalKey,bundle)" class="btn btn-light">
+        <span class="fs-6" [ngClass]="{'wrapper':wrap === true, 'wrap':wrap ===false}">{{data.internalKey}} -
+          {{data.descriptiveName}}</span>
+      </button>
+    </li>
+  </ul>
+</ng-template>

@@ -1,0 +1,72 @@
+<main class="vh-100 d-flex justify-content-center align-items-center bg-brand-secondary">
+    <section class="container">
+        <div class="align-items-center justify-content-center">
+            <div class="border-0 card bg-transparent">
+                <div class="p-3 p-lg-5 card-body">
+                    <div class="row">
+                        <div class="col-12 col-md-7 d-flex flex-column justify align-items-center text-center">
+                            <img src="../../../../../assets/public/img/sertec_w.svg" alt="SERTEC Logo" class="img-fluid"
+                                 width="330">
+                            <img src="../../../../../assets/public/img/benjamin_franklin_w.svg" alt="Benjamin Franklin Center"
+                                 class="mt-2 img-fluid" width="357">
+                        </div>
+                        <div class="mt-4 mt-md-0 col-12 col-md-5 align-self-center">
+                            <p class="fs-5 text-center text-light">
+                                SAC | Sistema de Asignación de Cuentas
+                                <span id="popover--sign-in-info" class="ms-2 d-inline-block" tabindex="0"
+                                      data-bs-placement="right" data-bs-toggle="popover"
+                                      data-bs-trigger="hover focus">
+                                    <i class="bi bi-bell bi-animation--shake"></i>
+                                </span>
+                            </p>
+                            <form (ngSubmit)="sendCredentials()" [formGroup]="formGroup" name="form--sign-in">
+                                <fieldset>
+                                    <div class="mb-3">
+                                        <label for="input__sign-in--username" class="form-label text-light">
+                                            Usuario
+                                        </label>
+                                        <div class="input-group">
+                                            <span class="border-0 input-group-text bg-transparent text-light">
+                                                <i class="mb-0 h5 bi bi-person"></i>
+                                            </span>
+                                            <input formControlName="username" type="text" id="input__sign-in--username" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="input__sign-in--password" class="form-label text-light">
+                                            Contraseña
+                                        </label>
+                                        <div class="input-group">
+                                            <span class="border-0 input-group-text bg-transparent text-light">
+                                                <i class="mb-0 h5 bi bi-person-lock"></i>
+                                            </span>
+                                            <input formControlName="password" type="{{showType}}" id="input__sign-in--password"
+                                                   class="form-control" autocomplete="on">
+                                            <button (click)="showPassword()" type="button" class="btn btn-secondary">
+                                                <i class="bi " [ngClass]="{'bi-eye':showPass === true, 'bi-eye-slash-fill':showPass === false}"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="mt-3 mx-auto d-grid gap-2 col-10">
+                                        <button [disabled]="formGroup.invalid" class="btn btn-success">
+                                            Iniciar Sesión
+                                        </button>
+                                    </div>
+                                </fieldset>
+                            </form>
+                            <div class="mt-5 text-center text-lg-end">
+                                <p class="mb-0 me-2 d-inline text-light">¿No tienes cuenta?</p>
+                                <button (click)="modalOpen()" type="button" id="button__open-modal--sign-up"
+                                        class="btn btn-sm btn-primary">
+                                    Registrar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<div class="position-absolute p-3 bottom-0 end-0 toast--notification"></div>
