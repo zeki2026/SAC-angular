@@ -1,1 +1,78 @@
 /* You can add global styles to this file, and also import other style files */
+.bg-brand-primary {
+    background-color: rgb(34, 45, 87);
+  }
+  
+  .bg-brand-secondary {
+    background-color: rgb(77, 84, 112);
+  }
+   
+  .bg-brand-tertiary { 
+    background-color: rgb(113, 123, 163);
+  }
+  
+  .single-menu-item {
+    padding-right: 1.25rem;
+    padding-left: 1.25rem;
+  }
+  
+  .callout {
+    padding: 1.25rem;
+    margin-top: 1.25rem;
+    margin-bottom: 1.25rem;
+    color: rgb(33, 37, 41);
+    background-color: rgb(248, 249, 250);
+    border-left: 0.25rem solid rgb(222, 226, 230);
+  }
+  
+  .callout-primary {
+    color: rgb(5, 44, 101);
+    background-color: rgb(207, 226, 255);
+    border-left: 0.25rem solid rgb(158, 197, 254);
+  }
+  
+  .callout-success {
+    color: rgb(10, 54, 34);
+    background-color: rgb(209, 231, 221);
+    border-left: 0.25rem solid rgb(163, 207, 187);
+  }
+  
+  .callout-danger {
+    color: rgb(88, 21, 28);
+    background-color: rgb(248, 215, 218);
+    border-left: 0.25rem solid rgb(241, 174, 181);
+  }
+  
+  .callout-warning {
+    color: rgb(102, 77, 3);
+    background-color: rgb(255, 243, 205);
+    border-left: 0.25rem solid rgb(255, 230, 156);
+  }
+  
+  .callout-info {
+    color: rgb(5, 81, 96);
+    background-color: rgb(207, 244, 252);
+    border-left: 0.25rem solid rgb(158, 234, 249);
+  }
+  
+  .bi-animation--shake::before {
+    animation: tilt-shaking 0.2s infinite;
+  }
+  
+  @keyframes tilt-shaking {
+    0% {
+      transform: rotate(0deg);
+    }
+    25% {
+      transform: rotate(5deg);
+    }
+    50% {
+      transform: rotate(0deg);
+    }
+    75% {
+      transform: rotate(-5deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
+  }
