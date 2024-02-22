@@ -14,7 +14,7 @@ export class SideBarComponent implements OnInit{
 
   offCanvasService = inject(NgbOffcanvas);
 
-wrap:boolean = false;
+wrap:boolean = true;
 
   constructor(private _service: SidebarService, private route:Router){
     
@@ -44,7 +44,7 @@ wrap:boolean = false;
         {
           next: (data) => {
             this.sidebarProperties = data;
-          console.log(data);
+          // console.log(data);
           },
           error: (err) => {
           console.log(err);

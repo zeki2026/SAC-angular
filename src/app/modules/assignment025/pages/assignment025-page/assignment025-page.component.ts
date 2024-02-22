@@ -27,8 +27,7 @@ export class Assignment025PageComponent implements OnInit, OnDestroy{
 
   }
 
-  getProperties()
-  {
+  getProperties(){
     this.dtOptions = {
       ajax: (dataTablesParameters: any, callback) => {
         this._service.getFileType()
@@ -45,7 +44,6 @@ export class Assignment025PageComponent implements OnInit, OnDestroy{
         })
       },
       pagingType: 'simple',
-      
       columns:[
         {title: 'ID',},
         {title: 'Nombre',},
@@ -61,18 +59,19 @@ export class Assignment025PageComponent implements OnInit, OnDestroy{
     let i = 1;
     data.forEach(data=>{
       let rowProperty = [];
+      let actionProperties:string = '';
       const requireProperties = JSON.parse(data['properties']);
 
       rowProperty.push(i);
       rowProperty.push(data['name']);
-
-      console.log(requireProperties);
-
-      let actionProperties:string = '';
-
       rowProperty.push(`description`);
+      // console.log(requireProperties);
+
       if(requireProperties.file){
-        actionProperties += `<label style="cursor:pointer;" class="input-group-text hover bg-info" for="${data['name']}"><i class="bi bi-archive"></i></label>
+        actionProperties += 
+        `<label style="cursor:pointer;" class="input-group-text hover bg-info" for="${data['name']}">
+          <i class="bi bi-archive"></i>
+        </label>
         <input type="file" name="jsonFile" id="${data['name']}" class="d-none" multiple>`;
       }else{
         actionProperties += '';
@@ -80,24 +79,24 @@ export class Assignment025PageComponent implements OnInit, OnDestroy{
 
       requireProperties.actions.forEach((e:any) => {
         actionProperties += 
-          `<button type="button" class=" btn btn-${e.style} btn-sm ">
+          `<button type="button" class="btn btn-${e.style} btn-sm">
               <i class=" bi ${e.icon}"></i>
           </button>`
       });
       
       rowProperty.push(actionProperties);
-
       dataTemplate.push(rowProperty);
       i++;
-
-      // console.log(rowProperty);
-    })
+    });
 
     return dataTemplate;
   }
 
+  sendFiles(name:any){
+    console.log(name)
+  }
+
   ngOnDestroy(): void {
-    // Do not forget to unsubscribe the event
     this.dtTrigger.unsubscribe();
   }
 
