@@ -21,8 +21,11 @@ export class LoginService {
     return this.http.post(`${this.URL}/apiSession/signIn`,data)
       .pipe(
         tap((dataRaw: any)=>{
-          const{ tokenSession } = dataRaw;
+          const{ tokenSession, jobCode, profileId } = dataRaw.data.user;
+          // console.log(dataRaw)
           this.cookie.set('Token',tokenSession,4,'/');
+          this.cookie.set('JobCode',jobCode,4,'/');
+          this.cookie.set('ProfileId',profileId,4,'/');
         })
       ); 
   }
@@ -35,4 +38,13 @@ export class LoginService {
     return cookieStatus;
   }
 
+  getToken():object
+  {
+    const cookies= {
+      "token":this.cookie.get('token'),
+      "jobcode":this.cookie.get('JobCode'),
+      "profileId":this.cookie.get('ProfileId')
+    };
+    return cookies;
+  }
 }

@@ -12,9 +12,7 @@ import { SidebarService } from '@shared/services/sidebar.service';
 export class SideBarComponent implements OnInit{
   sidebarProperties: SideBarModel = {};
 
-  offCanvasService = inject(NgbOffcanvas);
-
-wrap:boolean = true;
+  wrap:boolean = true;
 
   constructor(private _service: SidebarService, private route:Router){
     
@@ -24,34 +22,23 @@ wrap:boolean = true;
     this.getSideBarProperties();
   }
 
-  openOffCanvas(content: TemplateRef<any>):void{
-    const canvas = this.offCanvasService.open(content,{animation:true});
-    
-    // canvas.dismissed.subscribe(data=>{
-    //   console.log(data);
-    // })
-  }
-
-  redirect(internalKey:number,bundle:string){
-    this.route.navigate([`/home/group${bundle}/`,`assignment${internalKey}`]);
-    this.offCanvasService.dismiss();
-  }
-
-
   getSideBarProperties():void{
     this._service.getSideBarProperties()
-      .subscribe(
-        {
-          next: (data) => {
-            this.sidebarProperties = data;
+    .subscribe(
+      {
+        next: (data) => {
+          this.sidebarProperties = data;
           // console.log(data);
-          },
-          error: (err) => {
+        },
+        error: (err) => {
           console.log(err);
-          }
         }
+      }
       )
-  }
-
+    }
+    
+    redirect(internalKey:number,bundle:string){
+      this.route.navigate([`/home/group${bundle}/`,`assignment${internalKey}`]);
+    }
   
 }

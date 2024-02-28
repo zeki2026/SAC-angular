@@ -4,9 +4,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, provideHttpClient, withInterceptors } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { DataTablesModule } from 'angular-datatables';
+import { injectSessionInterceptor } from '@core/interceptors/inject-session.interceptor';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { DataTablesModule } from 'angular-datatables';
     DataTablesModule
   ],
   providers: [
-    CookieService
+    CookieService,
+    provideHttpClient(withInterceptors([injectSessionInterceptor]))
   ],
   bootstrap: [AppComponent]
 })

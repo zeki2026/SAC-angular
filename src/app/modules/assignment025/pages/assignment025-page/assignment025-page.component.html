@@ -1,5 +1,48 @@
 <div class=" mt-5 d-flex justify-content-center">
     <div class="m-2 w-75 table-responsive-xl">
-        <table datatable  [dtOptions]="dtOptions" class="table table-sm table-borderless rounded-3 shadow compact p-2 w-100 table-hover bg-white"></table>
-    </div> 
+        <table datatable  [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-sm 
+        table-borderless rounded-3 shadow compact p-2 w-100 table-hover bg-white">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Proceso</th>
+                    <th>Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of tableProperties">
+                    <td>{{item.id}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.properties.process}}</td>
+                    <td class="d-flex justify-content-center gap-2" >
+                        <ng-container *ngTemplateOutlet="tableOptions; context:{data:item}"></ng-container>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
+
+<ng-template #tableOptions let-dataProperties="data">
+    <label *ngIf="dataProperties.properties.file" style="cursor:pointer;" class="input-group-text bg-info" 
+    for="file{{dataProperties.name}}">
+        <i class="bi bi-archive"></i>
+        <input (change)="fileEvent($event)" type="file" class="d-none" multiple 
+        id="file{{dataProperties.name}}">
+    </label>
+    <label *ngIf="dataProperties.properties.calendar" class="input-group-text bg-info" 
+    for="calendar{{dataProperties.name}}" style="cursor:pointer;">
+        <button class="btn btn-sm position-relative bi bi-calendar3 p-0" (click)="dp.toggle()" 
+        type="button" id="calendar{{dataProperties.name}}">
+            <input (dateSelect)="calendarEvent($event)" class="form-control position-absolute" 
+            name="dp" ngbDatepicker #dp="ngbDatepicker" style="top:0; z-index: -1;  height: 0; 
+            width:0; opacity: 0;">
+        </button>
+    </label>
+    <button type="button" (click)="sendFiles(dataProperties.properties.process,dataProperties.properties.id)" 
+    class="btn btn-{{buttonsData.style}} btn-sm" 
+    *ngFor="let buttonsData of dataProperties.properties.actions">
+        <i class=" bi {{buttonsData.icon}} "></i>
+    </button>
+</ng-template>

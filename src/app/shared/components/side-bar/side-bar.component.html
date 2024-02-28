@@ -14,9 +14,9 @@
       </button>
     </div>
 
-    <div class="overflow-y-scroll p-2 border bg-white" style="max-height: calc(100vh - 12rem); height:calc(100vh - 98px);" [ngClass]="{'h-auto':wrap === true, '':wrap ===false}">
+    <div class="overflow-y-scroll p-2 border bg-light" style="max-height: calc(100vh - 12rem); height:calc(100vh - 98px);" [ngClass]="{'h-auto':wrap === true, '':wrap ===false}">
       <div *ngFor="let item of sidebarProperties.availableGroups">
-        <i class="fa-solid fa-chart-line"></i>
+        <!-- <i class="fa-solid fa-chart-line"></i> -->
         <h3 class="fs-5" [ngClass]="{'wrapper':wrap === true, 'wrap':wrap ===false}">Grupo {{item.bundle}}</h3>
         <ng-container *ngTemplateOutlet="groupSection; context:{item:item.bundle}"></ng-container>
       </div>
@@ -30,7 +30,7 @@
                 <span class="ms-2" [ngClass]="{'wrapper':wrap === true, 'wrap':wrap ===false}">ACAZW</span>
             </li>
             <li class="d-flex align-items-center" style="height: 2rem;" [ngClass]="{'':wrap === true, 'justify-content-center':wrap ===false}">
-              <label for="session" class="d-flex align-items-center"><i class="fa-solid fa-arrow-right-from-bracket fs-4"></i></label>
+              <label style="cursor: pointer;" for="session" class="d-flex align-items-center"><i class="fa-solid fa-arrow-right-from-bracket fs-4"></i></label>
               <button [routerLink]="['/auth','/login']" id="session" class="btn btn-light ps-2" [ngClass]="{'wrapper':wrap === true, 'wrap':wrap ===false}">
 
                 <span class="ms-2" [ngClass]="{'wrapper':wrap === true, 'wrap':wrap ===false}">Cerrar sesión</span>
@@ -48,7 +48,7 @@
   <ul>
     <li *ngFor="let data of sidebarProperties.availableGroupsProperties">
       <button [ngClass]="{'wrapper':wrap === true, 'wrap':wrap ===false}" *ngIf="data.bundle === bundle" type="button"
-        (click)="redirect(data.internalKey,bundle)" class="btn btn-light">
+        (click)="redirect(data.internalKey,bundle)" class="btn btn-light w-100">
         <span class="fs-6" [ngClass]="{'wrapper':wrap === true, 'wrap':wrap ===false}">{{data.internalKey}} -
           {{data.descriptiveName}}</span>
       </button>

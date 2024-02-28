@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { Assignment025RoutingModule } from './assignment025-routing.module';
 import { Assignment025PageComponent } from './pages/assignment025-page/assignment025-page.component';
 import { DataTablesModule } from 'angular-datatables';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,8 @@ import { DataTablesModule } from 'angular-datatables';
   imports: [
     CommonModule,
     Assignment025RoutingModule,
-    DataTablesModule
+    DataTablesModule,
+    NgbModule
   ]
 })
 export class Assignment025Module { }
